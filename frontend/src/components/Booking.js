@@ -150,7 +150,7 @@ const Booking = () => {
         console.log("Sending booking data:", bookingData); // Debugging Line
     
         try {
-            const response = await fetch("http://localhost:5000/bookings", {
+            const response = await fetch("https://airline-backend-mrkm.onrender.com/bookings", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -5,7 +5,7 @@ const MyBookings = () => {
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/bookings")
+        fetch("https://airline-backend-mrkm.onrender.com/bookings")
             .then((res) => res.json())
             .then((data) => setBookings(data))
             .catch((error) => console.error("Error fetching bookings:", error));
@@ -16,7 +16,7 @@ const MyBookings = () => {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
+            const response = await fetch(`https://airline-backend-mrkm.onrender.com/bookings/${bookingId}`, {
                 method: "DELETE",
             });
 
