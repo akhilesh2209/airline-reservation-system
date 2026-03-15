@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# frontend build
+frontend/build/
+
+# backend dependencies
+backend/node_modules/
+
+# environment files
+.env
+
+# misc
+.DS_Store
+.vscode/

@@ -1,0 +1,351 @@
+body{
+    background:linear-gradient(to bottom,#f5f7fb,#eef2f7);
+}
+
+.booking-container{
+    width: 85%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.booking-info,
+.flight-details,
+.passenger-info{
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    margin-bottom:28px;
+    box-shadow:0 8px 22px rgba(0,0,0,0.08);
+    border:1px solid #f1f1f1;
+}
+.booked{
+    background:#dcdcdc;
+    color:#777;
+    cursor:not-allowed;
+}
+.flight-text {
+    font-size: 18px;
+}
+
+
+h2{
+    margin-bottom:15px;
+    font-size:22px;
+    font-weight:600;
+    border-bottom:2px solid #f1f1f1;
+    padding-bottom:8px;
+}
+
+form input,
+form select{
+    width:100%;
+    padding:12px;
+    margin:6px 0;
+    border:1px solid #dcdcdc;
+    border-radius:6px;
+    font-size:14px;
+    box-sizing:border-box;
+    transition:all 0.2s ease;
+}
+
+form input:focus,
+form select:focus{
+    border-color:#007bff;
+    box-shadow:0 0 0 2px rgba(0,123,255,0.1);
+    outline:none;
+}
+
+/* Seat Selection */
+.seat-container {
+    text-align: center;
+    margin-bottom: 30px; /* ✅ Added spacing between seats & passenger details */
+}
+
+.seating-box{
+    background:#ffffff;
+    padding:30px 25px;
+    border-radius:35px 35px 12px 12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    display:inline-block;
+    width:380px;
+    margin:auto;
+}
+
+/* Seat Categories */
+.seat-category-container {
+    margin-bottom: 20px;
+}
+
+.seat-category {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Seating Grid */
+.seating-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Seat Rows */
+.seat-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.seat{
+    width:42px;
+    height:42px;
+    margin:4px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:6px;
+    border:1px solid #ccc;
+    background:#e9ecef;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    transition:all 0.2s ease;
+    box-shadow:0 2px 4px rgba(0,0,0,0.08);
+}
+
+.seat:hover{
+    transform:translateY(-2px) scale(1.05);
+    background:#d6e4ff;
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
+}
+
+.seat.selected{
+    background:#28a745;
+    color:white;
+    border:none;
+}
+/* Middle Aisle Number */
+.aisle-number {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+/* Passenger Info */
+.passenger-info {
+    margin-top: 30px; /* ✅ Space between seats and passenger info */
+}
+
+/* Passenger Details Box */
+.passenger-details {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+/* Passenger Fields - Aligning inputs properly */
+.passenger-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+/* Labels for Better Readability */
+.passenger-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Input Fields & Dropdowns for Passengers */
+.passenger-field input
+{
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.passenger-field select {
+    width: 99%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.booking-button{
+    width:100%;
+    padding:14px;
+    background:#ff6b00;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    margin-top:10px;
+    transition:all 0.2s ease;
+}
+
+.booking-button:hover{
+    background:#e65f00;
+    transform:translateY(-2px);
+}
+
+.total-cost{
+    background:white;
+    padding:18px;
+    border-radius:8px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    color:#333;
+    margin-top:15px;
+    border:1px solid #e0e0e0;
+}
+.waiting-list-info{
+    background:#ffffff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.booking-info,
+.flight-details,
+.passenger-info{
+    padding:30px;
+}
+
+.flight-time-label{
+    display:block;
+    margin-top:10px;
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+.flight-time-dropdown{
+    width:200px;
+    padding:10px 14px;
+    font-size:15px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    background:white;
+    cursor:pointer;
+    outline:none;
+    transition:all 0.25s ease;
+}
+
+/* hover */
+.flight-time-dropdown:hover{
+    border-color:#007bff;
+}
+
+/* focus */
+.flight-time-dropdown:focus{
+    border-color:#007bff;
+    box-shadow:0 0 0 3px rgba(0,123,255,0.15);
+}
+
+/* arrow styling */
+.flight-time-dropdown{
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    background-image:url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 10px center;
+}
+
+.seat-legend{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:12px 0 22px 0;
+    font-weight:500;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+}
+
+.legend-box{
+    width:18px;
+    height:18px;
+    border-radius:4px;
+    border:1px solid #333;
+}
+
+.legend-box.available{
+    background:lightgray;
+}
+
+.legend-box.selected{
+    background:green;
+}
+
+.legend-box.booked{
+    background:#999;
+}
+
+.aircraft-front{
+    text-align:center;
+    font-weight:600;
+    color:#6c757d;
+    font-size:14px;
+    margin:15px 0;
+    position:relative;
+}
+
+.aircraft-front::before,
+.aircraft-front::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:35%;
+    height:1px;
+    background:#ddd;
+}
+
+.aircraft-front::before{
+    left:0;
+}
+
+.aircraft-front::after{
+    right:0;
+}
+
+.booking-summary{
+background:white;
+padding:18px;
+border-radius:8px;
+margin-top:18px;
+border:1px solid #e5e5e5;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.summary-line{
+font-size:16px;
+margin-bottom:6px;
+color:#444;
+}
+
+.total-price{
+font-size:20px;
+font-weight:700;
+color:#ff6b00;
+margin-top:10px;
+}

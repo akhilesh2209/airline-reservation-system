@@ -1,0 +1,250 @@
+/* Center the Payment Section */
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh;
+    overflow-y: auto; 
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f5f7fa, #e4e8f0);
+}
+.plane-icon {
+    display: inline-block;
+    text-align: center;
+    width: 40px; /* Adjust width as needed */
+}
+
+/* Main Boarding Pass - Square */
+.boarding-pass {
+    width: 400px;
+    height: 400px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.18);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left; 
+    margin-bottom: 25px;
+}
+
+/* Orange Route Header */
+.route-header {
+    background: #ff5722;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers everything horizontally */
+    gap: 15px; /* Adds space between elements */
+    font-size: 18px;
+    text-align: center;
+    padding: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.boarding-pass:hover{
+    transform: translateY(-4px);
+    transition: 0.3s ease;
+}
+
+/* Dark Red Header - Date & Boarding Time */
+.boarding-pass-header {
+    background: #b71c1c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+}
+
+/* Gray Box for Passenger Details */
+.boarding-pass-body {
+    background: #e0e0e0;
+    padding: 15px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Info Rows */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 200; 
+}
+
+/* Total Amount */
+.total-amount {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Confirm Payment Button */
+.confirm-payment {
+    background: #ff5722;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    transition: all 0.25s ease;
+}
+
+.confirm-payment:hover {
+    background: #e64a19;
+    transform: translateY(-2px);
+}
+
+/* Payment Method Container */
+.payment-method-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.payment-method-container select {
+    width: 240px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+}
+
+.payment-method-container select:focus{
+    border-color: #ff5722;
+    box-shadow: 0px 0px 6px rgba(255,87,34,0.4);
+}
+
+.payment-method-container select:hover{
+    border-color: #ff5722;
+}
+
+/* Payment Confirmation */
+.payment-confirmation {
+    margin-top: 20px;
+    background: #e0ffe0;
+    border: 1px solid #b2ffb2;
+    padding: 15px;
+    border-radius: 5px;
+    color: #2e7d32;
+}
+
+/* Payment Options Layout */
+
+.payment-options{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    margin-top:15px;
+}
+
+.payment-option{
+    padding:12px 20px;
+    border:2px solid #ccc;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    transition:all 0.25s ease;
+    background:white;
+}
+
+.payment-option:hover{
+    border-color:#ff5722;
+    transform:translateY(-2px);
+}
+
+/* Selected payment */
+
+.payment-option.active{
+    border-color:#ff5722;
+    background:#fff3ee;
+    color:#ff5722;
+}
+
+/* Secure payment notice */
+
+.secure-payment{
+    margin-top:15px;
+    font-size:15px;
+    font-weight:600;
+    color:#2e7d32;
+}
+
+.secure-payment p{
+    margin:3px 0 0 0;
+    font-size:13px;
+    font-weight:normal;
+    color:#555;
+}
+
+.booking-summary-box{
+background:white;
+padding:24px 28px;
+border-radius:12px;
+margin:20px auto 30px auto;
+box-shadow:0 8px 22px rgba(0,0,0,0.08);
+border:1px solid #eee;
+text-align:left;
+width:100%;
+max-width:600px;
+}
+
+.booking-summary-box h3{
+text-align:center;
+margin-bottom:16px;
+font-size:20px;
+}
+
+.booking-summary-box p{
+margin:6px 0;
+font-size:15px;
+color:#444;
+}
+
+.summary-total{
+font-size:19px;
+font-weight:700;
+color:#ff6b00;
+margin-top:12px;
+}
+
+.payment-divider{
+margin:30px auto;
+width:60%;
+height:1px;
+background:#e0e0e0;
+}
+
+.summary-grid{
+display:flex;
+justify-content:space-between;
+margin-top:12px;
+gap:40px;
+}
+
+.summary-grid p{
+margin:6px 0;
+font-size:15px;
+color:#333;
+}
+
+.payment-title{
+margin-bottom:25px;
+font-size:26px;
+font-weight:700;
+}

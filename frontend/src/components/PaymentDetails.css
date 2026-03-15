@@ -1,0 +1,194 @@
+body {
+    background: linear-gradient(to bottom, #f5f7fa, #e4e8f0);
+}
+.payment-details-container {
+    max-width: 480px;
+    margin: 60px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.payment-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.method {
+    color: blue;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-group {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.card-row{
+    display:flex;
+    gap:15px;
+    width:100%;
+}
+
+.input-group.half{
+    flex:1;
+}
+
+.input-group.half input{
+    width:100%;
+    box-sizing:border-box;
+}
+.input-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40,167,69,0.15);
+}
+
+.input-group input:hover {
+    border-color: #007bff;
+}
+
+.confirm-payment-btn {
+    width: 100%;
+    padding: 13px;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.25s ease;
+}
+
+.confirm-payment-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .payment-details-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+/* UPI helper text */
+
+.upi-hint{
+    font-size:13px;
+    color:#666;
+    margin-top:6px;
+}
+
+/* UPI input focus improvement */
+
+.input-group input{
+    transition:all 0.25s ease;
+}
+
+.input-group input:focus{
+    border-color:#28a745;
+    box-shadow:0 0 0 3px rgba(40,167,69,0.15);
+}
+
+/* UPI section */
+
+.upi-section{
+    width:100%;
+    text-align:center;
+}
+
+.scan-title{
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.upi-qr{
+    display:flex;
+    justify-content:center;
+    margin:15px 0;
+    padding:12px;
+    background:#fff;
+    border-radius:10px;
+    border:2px dashed #ddd;
+}
+
+.or-text{
+    margin:12px 0;
+    font-weight:600;
+    color:#777;
+    position:relative;
+}
+
+.or-text::before,
+.or-text::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:40%;
+    height:1px;
+    background:#ddd;
+}
+
+.or-text::before{
+    left:0;
+}
+
+.or-text::after{
+    right:0;
+}
+
+.upi-hint{
+    font-size:13px;
+    color:#666;
+    margin-top:6px;
+}
+
+/* Bank Transfer Section */
+
+.bank-section{
+    width:100%;
+    margin-top:10px;
+}
+
+.bank-title{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.bank-note{
+    margin-top:10px;
+    font-size:13px;
+    color:#666;
+    text-align:center;
+}
