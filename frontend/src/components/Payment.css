@@ -1,250 +1,436 @@
-/* Center the Payment Section */
-.payment-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    min-height: 100vh;
-    overflow-y: auto; 
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #f5f7fa, #e4e8f0);
-}
-.plane-icon {
-    display: inline-block;
-    text-align: center;
-    width: 40px; /* Adjust width as needed */
-}
+/* ─────────────────────────────────────────────
+   PAYMENT.CSS  —  Premium Airline Payment UI
+   Fonts: Playfair Display + DM Sans
+   Palette: Navy, Sky Blue, Gold — matches Flights & Booking
+───────────────────────────────────────────── */
 
-/* Main Boarding Pass - Square */
-.boarding-pass {
-    width: 400px;
-    height: 400px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.18);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: left; 
-    margin-bottom: 25px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
-/* Orange Route Header */
-.route-header {
-    background: #ff5722;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers everything horizontally */
-    gap: 15px; /* Adds space between elements */
-    font-size: 18px;
-    text-align: center;
-    padding: 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-.boarding-pass:hover{
-    transform: translateY(-4px);
-    transition: 0.3s ease;
+:root {
+  --pm-navy:       #0a1628;
+  --pm-navy-mid:   #112240;
+  --pm-navy-light: #1e3a5f;
+  --pm-sky:        #0ea5e9;
+  --pm-sky-dark:   #0284c7;
+  --pm-sky-glow:   #38bdf8;
+  --pm-gold:       #f59e0b;
+  --pm-gold-light: #fcd34d;
+  --pm-white:      #ffffff;
+  --pm-off-white:  #f8fafc;
+  --pm-slate-100:  #f1f5f9;
+  --pm-slate-200:  #e2e8f0;
+  --pm-slate-400:  #94a3b8;
+  --pm-text:       #0f172a;
+  --pm-text-muted: #64748b;
+  --pm-success:    #10b981;
+  --pm-border:     rgba(255,255,255,0.1);
+  --pm-radius:     16px;
+  --pm-shadow:     0 4px 24px rgba(10,22,40,0.09), 0 1px 4px rgba(10,22,40,0.05);
+  --pm-shadow-deep:0 12px 40px rgba(10,22,40,0.16);
+  --pm-transition: 0.28s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* Dark Red Header - Date & Boarding Time */
-.boarding-pass-header {
-    background: #b71c1c;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 20px;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--pm-off-white); color: var(--pm-text); }
+
+/* ── PAGE ── */
+.pm-page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── EMPTY STATE ── */
+.pm-empty {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: var(--pm-off-white);
+}
+.pm-empty-icon { font-size: 48px; }
+.pm-empty h2 { font-family: 'Playfair Display', serif; font-size: 26px; }
+.pm-empty p  { color: var(--pm-text-muted); }
+
+/* ── HEADER ── */
+.pm-header {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--pm-navy) 0%, #0c2340 55%, var(--pm-navy-light) 100%);
+  padding: 52px 48px 60px; color: var(--pm-white);
+}
+.pm-header-overlay {
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.022'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.pm-header-content { position: relative; z-index: 2; max-width: 820px; }
+
+.pm-breadcrumb {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 22px;
+}
+.pm-bc-sep    { color: rgba(255,255,255,0.25); }
+.pm-bc-active { color: var(--pm-sky-glow); font-weight: 500; }
+
+.pm-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 44px); font-weight: 700;
+  color: var(--pm-white); margin-bottom: 24px; line-height: 1.1;
 }
 
-/* Gray Box for Passenger Details */
-.boarding-pass-body {
-    background: #e0e0e0;
-    padding: 15px 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.pm-route-row {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.pm-route-city {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 3vw, 32px); font-weight: 700; color: var(--pm-white);
+}
+.pm-route-city.dest { color: var(--pm-gold-light); }
+.pm-route-arrow { color: var(--pm-sky); opacity: 0.85; }
+.pm-route-arrow svg { width: 100px; }
+.pm-date-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(6px);
+  border-radius: 99px; padding: 7px 16px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75);
 }
 
-/* Info Rows */
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    font-weight: 200; 
+/* ── PROGRESS BAR ── */
+.pm-progress-wrap {
+  background: var(--pm-white); border-bottom: 1px solid var(--pm-slate-200);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.pm-progress {
+  max-width: 900px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center;
+}
+.pm-prog-step {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.pm-prog-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  background: var(--pm-slate-100); border: 2px solid var(--pm-slate-200);
+  color: var(--pm-text-muted); transition: var(--pm-transition);
+}
+.pm-prog-step.done .pm-prog-circle  { background: var(--pm-success); border-color: var(--pm-success); color: var(--pm-white); }
+.pm-prog-step.current .pm-prog-circle { background: var(--pm-sky-dark); border-color: var(--pm-sky); color: var(--pm-white); box-shadow: 0 0 0 4px rgba(14,165,233,0.18); }
+.pm-prog-label { font-size: 12px; font-weight: 600; color: var(--pm-text-muted); white-space: nowrap; }
+.pm-prog-step.done .pm-prog-label    { color: var(--pm-success); }
+.pm-prog-step.current .pm-prog-label { color: var(--pm-sky-dark); }
+.pm-prog-line {
+  flex: 1; height: 2px; margin: 0 8px; min-width: 16px;
+  background: var(--pm-slate-200); border-radius: 99px; transition: var(--pm-transition);
+}
+.pm-prog-line.done { background: var(--pm-success); }
+
+/* ── MAIN LAYOUT ── */
+.pm-main {
+  flex: 1; display: grid; grid-template-columns: 1fr 340px; gap: 28px;
+  max-width: 1200px; width: 100%; margin: 32px auto;
+  padding: 0 24px 60px; align-items: start;
 }
 
-/* Total Amount */
-.total-amount {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
+/* ── CARDS ── */
+.pm-card {
+  background: var(--pm-white); border-radius: var(--pm-radius);
+  border: 1px solid var(--pm-slate-200);
+  box-shadow: var(--pm-shadow);
+  margin-bottom: 20px; overflow: hidden;
+  animation: pmCardIn 0.4s ease both;
+}
+@keyframes pmCardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pm-card:nth-child(2) { animation-delay: 0.1s; }
+.pm-card:nth-child(3) { animation-delay: 0.2s; }
+
+.pm-card-head {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; border-bottom: 1px solid var(--pm-slate-200);
+}
+.pm-card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--pm-slate-200); line-height: 1; flex-shrink: 0;
+}
+.pm-card-title { font-size: 17px; font-weight: 700; color: var(--pm-text); margin-bottom: 3px; }
+.pm-card-sub   { font-size: 13px; color: var(--pm-text-muted); }
+.pm-card-body  { padding: 24px; }
+
+/* ── SUMMARY GRID ── */
+.pm-summary-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.pm-summary-col {
+  background: var(--pm-slate-100); border-radius: 10px; padding: 14px 16px;
+  border: 1px solid var(--pm-slate-200);
+}
+.pm-summary-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: var(--pm-text-muted); margin-bottom: 6px; }
+.pm-summary-val   { font-size: 15px; font-weight: 700; color: var(--pm-text); }
+
+/* ── BOARDING PASSES ── */
+.pm-passes-grid { display: flex; flex-direction: column; gap: 24px; }
+
+.pm-boarding-pass {
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(10,22,40,0.14);
+  border: 1px solid var(--pm-slate-200);
+  background: var(--pm-white);
+  transition: var(--pm-transition);
+}
+.pm-boarding-pass:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(10,22,40,0.2); }
+
+/* Pass Header */
+.pm-pass-header {
+  background: linear-gradient(135deg, var(--pm-navy) 0%, var(--pm-navy-light) 100%);
+  padding: 16px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pm-pass-airline { display: flex; align-items: center; gap: 12px; }
+.pm-pass-logo {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--pm-white);
+}
+.pm-pass-airline-name { font-size: 14px; font-weight: 700; color: var(--pm-white); }
+.pm-pass-flight-num   { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+.pm-pass-class {
+  padding: 4px 14px; border-radius: 99px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.pm-class-platinum { background: linear-gradient(90deg,#d4af37,#f5e07b); color: #6b4f00; }
+.pm-class-business  { background: linear-gradient(90deg,#7c3aed,#a78bfa); color: var(--pm-white); }
+.pm-class-economy   { background: rgba(14,165,233,0.2); color: var(--pm-sky-dark); border: 1px solid rgba(14,165,233,0.3); }
+
+/* Route strip */
+.pm-pass-route {
+  display: flex; align-items: center;
+  padding: 20px 22px;
+  background: var(--pm-slate-100);
+  border-bottom: 1px dashed var(--pm-slate-200);
+}
+.pm-pass-city-block { display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; }
+.pm-pass-city-block.right { text-align: right; align-items: flex-end; }
+.pm-pass-city-code { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--pm-navy); line-height: 1; }
+.pm-pass-city-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--pm-text-muted); font-weight: 600; }
+.pm-pass-time { font-size: 14px; font-weight: 700; color: var(--pm-sky-dark); margin-top: 4px; }
+
+.pm-pass-route-mid {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 6px; padding: 0 16px; position: relative;
+}
+.pm-pass-plane { font-size: 20px; color: var(--pm-sky); }
+.pm-pass-route-line {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--pm-sky), var(--pm-gold));
+}
+.pm-pass-duration { font-size: 11px; color: var(--pm-text-muted); font-weight: 500; }
+
+/* Perforation */
+.pm-pass-perf {
+  display: flex; align-items: center;
+  background: var(--pm-slate-100);
+  position: relative; height: 20px;
+}
+.pm-perf-notch {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--pm-off-white);
+  border: 1px solid var(--pm-slate-200);
+  position: absolute; top: 50%; transform: translateY(-50%);
+  flex-shrink: 0;
+}
+.pm-perf-notch.left  { left: -10px; }
+.pm-perf-notch.right { right: -10px; }
+.pm-perf-line {
+  flex: 1; height: 1px; margin: 0 16px;
+  background: repeating-linear-gradient(90deg, var(--pm-slate-300) 0px, var(--pm-slate-300) 6px, transparent 6px, transparent 12px);
 }
 
-/* Confirm Payment Button */
-.confirm-payment {
-    background: #ff5722;
-    color: white;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 15px;
-    margin-bottom: 40px;
-    transition: all 0.25s ease;
+/* Pass details grid */
+.pm-pass-details {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; padding: 18px 22px;
+  background: var(--pm-white);
+}
+.pm-pd-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--pm-text-muted); font-weight: 600; margin-bottom: 4px; }
+.pm-pd-val   { font-size: 14px; font-weight: 700; color: var(--pm-text); }
+.pm-pd-seat  { font-size: 18px; color: var(--pm-sky-dark); }
+
+/* Barcode */
+.pm-pass-barcode {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 14px 22px 18px;
+  background: var(--pm-white); border-top: 1px dashed var(--pm-slate-200);
+}
+.pm-barcode-bars {
+  display: flex; align-items: flex-end; gap: 1px; height: 50px;
+}
+.pm-bar { background: var(--pm-navy); border-radius: 1px; }
+.pm-barcode-num { font-size: 11px; font-family: 'Courier New', monospace; color: var(--pm-text-muted); letter-spacing: 2px; }
+
+/* ── PAYMENT METHODS ── */
+.pm-secure-notice {
+  display: flex; align-items: center; gap: 14px;
+  background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
+  padding: 14px 18px; margin-bottom: 22px;
+}
+.pm-secure-icon { font-size: 22px; flex-shrink: 0; }
+.pm-secure-title { font-size: 14px; font-weight: 700; color: #166534; margin-bottom: 2px; }
+.pm-secure-sub   { font-size: 12px; color: #15803d; }
+
+.pm-methods { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.pm-method {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 12px;
+  border: 1.5px solid var(--pm-slate-200);
+  background: var(--pm-white);
+  cursor: pointer; transition: var(--pm-transition);
+}
+.pm-method:hover { border-color: var(--pm-sky); background: #f0f9ff; }
+.pm-method.pm-method-active { border-color: var(--pm-sky-dark); background: #f0f9ff; box-shadow: 0 0 0 3px rgba(14,165,233,0.12); }
+
+.pm-method-radio { flex-shrink: 0; }
+.pm-radio-dot {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--pm-slate-300);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--pm-transition);
+}
+.pm-radio-dot.active {
+  border-color: var(--pm-sky-dark);
+  background: var(--pm-sky-dark);
+  box-shadow: inset 0 0 0 3px var(--pm-white);
+}
+.pm-method-icon { font-size: 24px; flex-shrink: 0; }
+.pm-method-info { flex: 1; }
+.pm-method-label { font-size: 15px; font-weight: 700; color: var(--pm-text); }
+.pm-method-sub   { font-size: 12px; color: var(--pm-text-muted); margin-top: 2px; }
+.pm-method-check {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--pm-success); color: var(--pm-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
 }
 
-.confirm-payment:hover {
-    background: #e64a19;
-    transform: translateY(-2px);
+/* Confirm button */
+.pm-confirm-btn {
+  width: 100%; padding: 16px 24px; border-radius: 12px; border: none;
+  background: linear-gradient(135deg, var(--pm-sky-dark) 0%, var(--pm-sky) 100%);
+  color: var(--pm-white);
+  font-size: 16px; font-weight: 700;
+  cursor: pointer; transition: var(--pm-transition);
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  position: relative; overflow: hidden;
+}
+.pm-confirm-btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0; transition: var(--pm-transition);
+}
+.pm-confirm-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(14,165,233,0.42); }
+.pm-confirm-btn:hover:not(:disabled)::after { opacity: 1; }
+.pm-confirm-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+.pm-confirm-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.pm-confirm-btn.pm-processing {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
 }
 
-/* Payment Method Container */
-.payment-method-container {
-    margin-top: 20px;
-    text-align: center;
+.pm-spinner {
+  width: 18px; height: 18px; flex-shrink: 0;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: white; border-radius: 50%;
+  animation: pmSpin 0.8s linear infinite;
+}
+@keyframes pmSpin { to { transform: rotate(360deg); } }
+
+/* Confirmed banner */
+.pm-confirmed-banner {
+  display: flex; align-items: center; gap: 14px;
+  background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
+  padding: 16px 18px; margin-top: 16px;
+  animation: pmFadeIn 0.4s ease;
+}
+@keyframes pmFadeIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+.pm-confirmed-icon { font-size: 26px; flex-shrink: 0; }
+.pm-confirmed-title { font-size: 15px; font-weight: 700; color: #166534; margin-bottom: 3px; }
+.pm-confirmed-sub   { font-size: 13px; color: #15803d; }
+
+/* ── SIDEBAR ── */
+.pm-sidebar { position: sticky; top: 80px; }
+.pm-sidebar-card {
+  background: var(--pm-navy); border-radius: var(--pm-radius);
+  overflow: hidden; box-shadow: var(--pm-shadow-deep); color: var(--pm-white);
+}
+.pm-sc-header {
+  background: linear-gradient(135deg, var(--pm-navy-mid), var(--pm-navy-light));
+  padding: 18px 20px; border-bottom: 1px solid var(--pm-border);
+}
+.pm-sc-header h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
+
+.pm-sc-route {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; border-bottom: 1px solid var(--pm-border);
+}
+.pm-scr-col { display: flex; flex-direction: column; gap: 3px; }
+.pm-scr-col.right { align-items: flex-end; }
+.pm-scr-city { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--pm-white); }
+.pm-scr-col.right .pm-scr-city { color: var(--pm-gold-light); }
+.pm-scr-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.4px; }
+.pm-scr-plane { font-size: 20px; color: var(--pm-sky); opacity: 0.7; }
+
+.pm-sc-rows { padding: 14px 20px; border-bottom: 1px solid var(--pm-border); display: flex; flex-direction: column; gap: 8px; }
+.pm-sc-row { display: flex; justify-content: space-between; font-size: 13px; }
+.pm-sc-row span:first-child { color: rgba(255,255,255,0.45); }
+.pm-sc-row span:last-child  { color: var(--pm-white); font-weight: 600; }
+
+.pm-sc-pax { padding: 14px 20px; border-bottom: 1px solid var(--pm-border); display: flex; flex-direction: column; gap: 10px; }
+.pm-sc-pax-row { display: flex; align-items: center; gap: 10px; }
+.pm-sc-pax-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--pm-sky-dark), var(--pm-sky));
+  color: var(--pm-white); font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.pm-sc-pax-name { font-size: 13px; font-weight: 600; color: var(--pm-white); }
+.pm-sc-pax-seat { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+.pm-sc-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px; border-bottom: 1px solid var(--pm-border);
+  font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.55);
+}
+.pm-sc-total-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700; color: var(--pm-gold);
 }
 
-.payment-method-container select {
-    width: 240px;
-    padding: 10px 12px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 15px;
-    background-color: white;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s ease;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+.pm-sc-badges { display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; }
+.pm-sc-badge  { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 500; }
+
+/* ── FOOTER ── */
+.pm-footer { background: var(--pm-navy); padding: 18px 40px; }
+.pm-footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  font-size: 13px; color: rgba(255,255,255,0.4);
 }
 
-.payment-method-container select:focus{
-    border-color: #ff5722;
-    box-shadow: 0px 0px 6px rgba(255,87,34,0.4);
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .pm-main { grid-template-columns: 1fr; }
+  .pm-sidebar { position: static; }
+  .pm-summary-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-.payment-method-container select:hover{
-    border-color: #ff5722;
-}
-
-/* Payment Confirmation */
-.payment-confirmation {
-    margin-top: 20px;
-    background: #e0ffe0;
-    border: 1px solid #b2ffb2;
-    padding: 15px;
-    border-radius: 5px;
-    color: #2e7d32;
-}
-
-/* Payment Options Layout */
-
-.payment-options{
-    display:flex;
-    gap:15px;
-    justify-content:center;
-    margin-top:15px;
-}
-
-.payment-option{
-    padding:12px 20px;
-    border:2px solid #ccc;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
-    transition:all 0.25s ease;
-    background:white;
-}
-
-.payment-option:hover{
-    border-color:#ff5722;
-    transform:translateY(-2px);
-}
-
-/* Selected payment */
-
-.payment-option.active{
-    border-color:#ff5722;
-    background:#fff3ee;
-    color:#ff5722;
-}
-
-/* Secure payment notice */
-
-.secure-payment{
-    margin-top:15px;
-    font-size:15px;
-    font-weight:600;
-    color:#2e7d32;
-}
-
-.secure-payment p{
-    margin:3px 0 0 0;
-    font-size:13px;
-    font-weight:normal;
-    color:#555;
-}
-
-.booking-summary-box{
-background:white;
-padding:24px 28px;
-border-radius:12px;
-margin:20px auto 30px auto;
-box-shadow:0 8px 22px rgba(0,0,0,0.08);
-border:1px solid #eee;
-text-align:left;
-width:100%;
-max-width:600px;
-}
-
-.booking-summary-box h3{
-text-align:center;
-margin-bottom:16px;
-font-size:20px;
-}
-
-.booking-summary-box p{
-margin:6px 0;
-font-size:15px;
-color:#444;
-}
-
-.summary-total{
-font-size:19px;
-font-weight:700;
-color:#ff6b00;
-margin-top:12px;
-}
-
-.payment-divider{
-margin:30px auto;
-width:60%;
-height:1px;
-background:#e0e0e0;
-}
-
-.summary-grid{
-display:flex;
-justify-content:space-between;
-margin-top:12px;
-gap:40px;
-}
-
-.summary-grid p{
-margin:6px 0;
-font-size:15px;
-color:#333;
-}
-
-.payment-title{
-margin-bottom:25px;
-font-size:26px;
-font-weight:700;
+@media (max-width: 640px) {
+  .pm-header { padding: 32px 20px 44px; }
+  .pm-title  { font-size: 24px; }
+  .pm-main   { padding: 0 16px 40px; }
+  .pm-summary-grid { grid-template-columns: 1fr 1fr; }
+  .pm-pass-details { grid-template-columns: repeat(2, 1fr); }
+  .pm-progress { gap: 4px; padding: 12px 16px; }
+  .pm-prog-label { display: none; }
+  .pm-prog-line { min-width: 10px; }
+  .pm-pass-city-code { font-size: 22px; }
 }
